@@ -49,15 +49,19 @@ def change_value(val_query):
 print("Emitter Basic Circuit Calculator")
 print("Please use this format of scientific notation if needed: Example: 1e-08")
 
-for i in range(12):
+for i in range(len(strArrayInput)):
     userInput[i] = float(input("Type Value for " + strArrayInput[i] + " = "))
 print("Finished!")
 
 while True:
-    for j in range(21):
+    for j in range(len(strArrayOutput)):
         print(strArrayOutput[j] + " = " + str(calc(userInput[0], userInput[1], userInput[2], userInput[3], userInput[4],
                                                    userInput[5], userInput[6], userInput[7], userInput[8], userInput[9],
-                                                   userInput[10], userInput[11])[j]))
+                                                   userInput[10], userInput[11])[j]) + "\t", end='')
+        if j % 4 == 0:
+            print()
+
+    print()
     query = input("Would you like to change some variables? (y/n)")
     change_value(query)
     if query == "n":
