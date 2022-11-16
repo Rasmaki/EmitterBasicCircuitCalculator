@@ -34,14 +34,31 @@ def calc(i_s, b, r_c, u_b, factor_ir2, u_t, u_early, v_u, r_i, r_l, fs, index):
     return calc_array
 
 
+def change_value(val_query):
+    if val_query == "y":
+        change_val = input("Please type the Variable you want to change: ")
+        found = False
+        for h in range(len(userInput)):
+            if change_val == strArrayInput[h]:
+                strArrayInput[h] = input("Please type the new value:")
+                found = True
+        if not found:
+            print("Variable was not found.")
+
+
 print("Emitter Basic Circuit Calculator")
 print("Please use this format of scientific notation if needed: Example: 1e-08")
 
 for i in range(12):
     userInput[i] = float(input("Type Value for " + strArrayInput[i] + " = "))
-
 print("Finished!")
-for j in range(21):
-    print(strArrayOutput[j] + " = " + str(calc(userInput[0], userInput[1], userInput[2], userInput[3], userInput[4],
-                                               userInput[5], userInput[6], userInput[7], userInput[8], userInput[9],
-                                               userInput[10], userInput[11])[j]))
+
+while True:
+    for j in range(21):
+        print(strArrayOutput[j] + " = " + str(calc(userInput[0], userInput[1], userInput[2], userInput[3], userInput[4],
+                                                   userInput[5], userInput[6], userInput[7], userInput[8], userInput[9],
+                                                   userInput[10], userInput[11])[j]))
+    query = input("Would you like to change some variables? (y/n)")
+    change_value(query)
+    if query == "n":
+        break
